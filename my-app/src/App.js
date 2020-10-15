@@ -3,18 +3,18 @@ import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
 
+import { Grommet, Header, Button, Menu } from 'grommet';
+import { withStyles } from '@material-ui/core/styles';
+
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Let me give you a pop</p>
+    <Header background="brand">
+  <Button icon={<Icons.Home />} hoverIndicator />
+  <Menu label="account" items={[{ label: 'logout' }]} />
+</Header>
 
-
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-
-      </header>
-      <body>salope</body>
     </div>
   );
 }
