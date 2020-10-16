@@ -7,52 +7,31 @@ import { Grommet, Header, Button, Menu, Footer, Text, Anchor, Main, Heading, Par
    Tabs, Image, Table, TableCell, TableRow, TableHeader, TableBody, Card, CardBody,CardFooter,
    List
  } from 'grommet';
-import { Home, UserFemale, Instagram, Twitter, Linkedin, Wifi, System, User, Task, Location, ShieldSecurity, Tasks, More } from 'grommet-icons';
+import { Home, UserFemale, Instagram, Twitter, Linkedin, Wifi, System, User, Task, Location, ShieldSecurity, Tasks, More, HostMaintenance, Action, Send } from 'grommet-icons';
 
 
 
 const data = [
   {
     color: 'blue',
-    icon: <Wifi size="large" />,
-    title: 'Remote Access',
-    subTitle: 'Lights out Management (LOM)',
-    message: 'Connected',
-  },
-  {
-    color: 'green',
-    icon: <System size="large" />,
-    title: 'System',
-    subTitle: 'Sub-system and Devices',
-    message: 'Composable System',
+    icon: <Send size="large" />,
+    title: 'Airbus',
+    subTitle: 'Développeur',
+    message: 'Alternance',
   },
   {
     color: 'red',
-    icon: <User size="large" />,
-    title: 'User Sessions',
-    subTitle: 'User Access on Server',
-    message: '4 active sessions',
-  },
-  {
-    color: 'purple',
-    icon: <Tasks size="large" />,
-    title: 'Logs',
-    subTitle: 'Events, Integration, and Status',
-    message: '204,353',
+    icon: <HostMaintenance size="large" />,
+    title: 'Pmetique45',
+    subTitle: 'Technicien réseaux',
+    message: 'Stage',
   },
   {
     color: 'orange',
-    icon: <Location size="large" />,
-    title: 'Beacons',
-    subTitle: 'Unique identification light',
-    message: '24 beacons connected',
-  },
-  {
-    color: 'teal',
-    icon: <ShieldSecurity size="large" />,
-    title: 'Security',
-    subTitle: 'Trusted Platform Module',
-    message: 'No Module Connected',
+    icon: <Action size="large" />,
+    title: 'Orange',
+    subTitle: 'Technicien réseaux',
+    message: 'Stage',
   },
 ];
 
@@ -94,7 +73,7 @@ const Identifier = ({ children, title, subTitle, size, ...rest }) => (
 );
 
 export const Example = () => (
-  <Grommet theme={theme} full>
+  <Grommet theme={theme}>
     <Box pad="large">
       {/* Responsive Grid */}
       <Grid gap="medium" rows="small" columns={{ count: 'fit', size: 'small' }}>
@@ -120,9 +99,6 @@ export const Example = () => (
     </Box>
   </Grommet>
 );
-
-
-
 
 
 function App() {
@@ -237,10 +213,9 @@ function Skills() {
         <Box
         margin='small'
         pad='small'
+        direction="row"
         >
-          <Text>Alternance Airbus</Text>
-          <Text>Stage Orange</Text>
-          <Text>Stage Sam depan</Text>
+          <Example/>
 
         </Box>
       </Tab>
