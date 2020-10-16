@@ -72,41 +72,18 @@ const Identifier = ({ children, title, subTitle, size, ...rest }) => (
   </Box>
 );
 
-export const Example = () => (
-  <Grommet theme={theme}>
-    <Box pad="large">
-      {/* Responsive Grid */}
-      <Grid gap="medium" rows="small" columns={{ count: 'fit', size: 'small' }}>
-        {data.map(value => (
-          <Card background={value.color} key={value.message}>
-            <CardBody pad="small">
-              <Identifier
-                pad="small"
-                title={value.title}
-                subTitle={value.subTitle}
-                size="small"
-                align="start"
-              >
-                {value.icon}
-              </Identifier>
-            </CardBody>
-            <CardFooter pad={{ horizontal: 'medium', vertical: 'small' }}>
-              <Text size="xsmall">{value.message}</Text>
-            </CardFooter>
-          </Card>
-        ))}
-      </Grid>
-    </Box>
-  </Grommet>
-);
-
 
 function App() {
   return (
     <div className="App">
       <MyHeader/>
       <Description/>
+      <Box background="#2c3e50" pad="small"><Heading textAlign="start">Compétences</Heading></Box>
       <Skills/>
+      <Box  background="#2c3e50" pad="small"><Heading textAlign="start">Experiences professionnelles</Heading></Box>
+      <ProExp/>
+      <Box  background="#2c3e50" pad="small"><Heading textAlign="start">Formations</Heading></Box>
+      <Formations/>
       <ContactMe/>
       <MyFooter/>
     </div>
@@ -146,22 +123,11 @@ Passionné du Web et des nouvelles technologies depuis des années, je me prése
 
 function Skills() {
   return(
-    <Box
-      direction="row"
-      border={{ color: '#2c3e50', size: 'xlarge' }}
-      pad="0px"
-    >
-    <Box
-      direction="row"
-      pad="0"
-    >
-    <Tabs height='medium' flex='grow' alignSelf='center'>
-      <Tab title='Compétences'>
         <Box
-        margin='small'
         pad='small'
-        textAlign="start"
+        textAlign="center"
         direction='row'
+        background="#bdc3c7"
         >
         <Card pad="small" gap="medium" background="#00C8FF" margin="1em">
           <CardBody>Programmation / Dev Web</CardBody>
@@ -207,19 +173,7 @@ function Skills() {
             />
           </Box>
         </Card>
-        </Box>
-      </Tab>
-      <Tab title='Exp. Pro'>
-        <Box
-        margin='small'
-        pad='small'
-        direction="row"
-        >
-          <Example/>
 
-        </Box>
-      </Tab>
-      <Tab title='Formation'>
         <Box
         flex='grow'
         margin='small'
@@ -230,13 +184,58 @@ function Skills() {
           <Text>BTS SNIR</Text>
           <Image src='' />
         </Box>
-      </Tab>
-    </Tabs>
-
     </Box>
+  )
+}
 
-
+export const ProExp = () => (
+  <Grommet theme={theme}>
+    <Box pad="large" background="#bdc3c7">
+      {/* Responsive Grid */}
+      <Grid gap="medium" rows="small" columns={{ count: 'fit', size: 'small' }}>
+        {data.map(value => (
+          <Card background={value.color} key={value.message}>
+            <CardBody pad="small">
+              <Identifier
+                pad="small"
+                title={value.title}
+                subTitle={value.subTitle}
+                size="small"
+                align="start"
+              >
+                {value.icon}
+              </Identifier>
+            </CardBody>
+            <CardFooter pad={{ horizontal: 'medium', vertical: 'small' }}>
+              <Text size="xsmall">{value.message}</Text>
+            </CardFooter>
+          </Card>
+        ))}
+      </Grid>
     </Box>
+  </Grommet>
+);
+
+function Formations() {
+  return(
+            <Box
+            pad='small'
+            textAlign="center"
+            direction='row'
+            background="#bdc3c7"
+            >
+            <Box
+            flex='grow'
+            margin='small'
+            pad='small'
+            >
+              <Text>Ynov Campus</Text>
+              <Text>LP Pro APSIO IUT Blagnac</Text>
+              <Text>BTS SNIR</Text>
+              <Image src='' />
+            </Box>
+
+        </Box>
   )
 }
 
