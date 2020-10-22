@@ -4,10 +4,13 @@ import { Counter } from './features/counter/Counter';
 import './App.css';
 
 import { Grommet, Header, Button, Menu, Footer, Text, Anchor, Main, Heading, Paragraph, Avatar, Box, Grid, Nav, Tab,
-   Tabs, Image, Table, TableCell, TableRow, TableHeader, TableBody, Card, CardBody,CardFooter,
-   List
+   Tabs, Image, Table, TableCell, TableRow, TableHeader, TableBody, Card, CardBody,CardFooter, Carousel,
+   List, ResponsiveContext
  } from 'grommet';
-import { Home, UserFemale, Instagram, Twitter, Linkedin, Wifi, System, User, Task, Location, ShieldSecurity, Tasks, More, HostMaintenance, Action, Send } from 'grommet-icons';
+import { Home, UserFemale, Instagram, Twitter, Linkedin, Wifi, System, User, Task, Location, ShieldSecurity, Tasks, More, HostMaintenance, Action, Send, Code, Projects } from 'grommet-icons';
+import ynov_campus_logo from "./images/ynov_campus_logo.svg";
+import iut_blagnac_logo from "./images/iut_blagnac_logo.png";
+import durzy_logo from "./images/durzy_logo.png";
 
 
 
@@ -78,11 +81,11 @@ function App() {
     <div className="App">
       <MyHeader/>
       <Description/>
-      <Box background="#2c3e50" pad="small"><Heading textAlign="start">Compétences</Heading></Box>
+      <Box background="#2c3e50" pad="small"><Heading margin="auto">Compétences</Heading></Box>
       <Skills/>
-      <Box  background="#2c3e50" pad="small"><Heading textAlign="start">Experiences professionnelles</Heading></Box>
+      <Box  background="#2c3e50" pad="small"><Heading margin="auto">Experiences professionnelles</Heading></Box>
       <ProExp/>
-      <Box  background="#2c3e50" pad="small"><Heading textAlign="start">Formations</Heading></Box>
+      <Box  background="#2c3e50" pad="small"><Heading margin="auto">Formations</Heading></Box>
       <Formations/>
       <ContactMe/>
       <MyFooter/>
@@ -124,67 +127,57 @@ Passionné du Web et des nouvelles technologies depuis des années, je me prése
 function Skills() {
   return(
         <Box
-        pad='small'
+        pad='large'
         textAlign="center"
-        direction='row'
         background="#bdc3c7"
         >
-        <Card pad="small" gap="medium" background="#00C8FF" margin="1em">
-          <CardBody>Programmation / Dev Web</CardBody>
-          <Box>
-            <List
-            primaryKey="name"
-            secondaryKey="percent"
-            data={[
-              { name: 'HTML/CSS', percent: '20%' },
-              { name: 'React', percent: '30%' },
-              { name: 'Java', percent: 40 },
-              { name: 'Python', percent: 80 },
-            ]}
-            />
-          </Box>
-        </Card>
-        <Card pad="small" gap="medium" background="#FC6161" margin="1em">
-          <CardBody>Réseau</CardBody>
-          <Box>
-            <List
-            primaryKey="name"
-            secondaryKey="percent"
-            data={[
-              { name: 'Configuration d\'un réseau IPV4 et IPV6' },
-              { name: 'Mise en place de VLAN' },
-              { name: 'Installation de serveur' },
-              { name: 'Supervision de serveurs' },
-            ]}
-            />
-          </Box>
-        </Card>
-        <Card pad="small" gap="medium" background="#FFBC44" margin="1em">
-          <CardBody>Gestion de projet</CardBody>
-          <Box>
-            <List
-            primaryKey="name"
-            secondaryKey="percent"
-            data={[
-              { name: 'Méthode agile Scrum' },
-              { name: 'Diagrammes UML' },
-              { name: 'Merise (MCD)' },
-            ]}
-            />
-          </Box>
-        </Card>
-
-        <Box
-        flex='grow'
-        margin='small'
-        pad='small'
-        >
-          <Text>Ynov Campus</Text>
-          <Text>LP Pro APSIO IUT Blagnac</Text>
-          <Text>BTS SNIR</Text>
-          <Image src='' />
+          <Grid gap="medium" columns={{ count: 'fit', size: 'small' }}>
+          <Card pad="small" gap="medium" background="#00C8FF">
+            <CardBody> <Text weight="bold" size="xlarge" color="#666666"><Code size="medium" />  Programmation / Dev web</Text> </CardBody>
+            <Box>
+                <List
+                primaryKey="name"
+                secondaryKey="percent"
+                data={[
+                  { name: 'HTMsL/CSS', percent: '20%' },
+                  { name: 'React', percent: '30%' },
+                  { name: 'Java', percent: 40 },
+                  { name: 'Python', percent: 80 },
+                ]}
+                />
+            </Box>
+          </Card>
+          <Card pad="small" gap="medium" background="#FC6161" >
+            <CardBody> <Text weight="bold" size="xlarge" color="#666666"><Action size="medium" />  Réseau</Text> </CardBody>
+            <Box>
+              <List
+              primaryKey="name"
+              secondaryKey="percent"
+              data={[
+                { name: 'Configuration d\'un réseau IPV4 et IPV6' },
+                { name: 'Mise en place de VLAN' },
+                { name: 'Installation de serveur' },
+                { name: 'Supervision de serveurs' },
+              ]}
+              />
+            </Box>
+          </Card>
+          <Card pad="small" gap="medium" background="#FFBC44">
+            <CardBody> <Text weight="bold" size="xlarge" color="#666666"><Projects size="medium" />  Gestion de projet</Text> </CardBody>
+            <Box>
+              <List
+              primaryKey="name"
+              secondaryKey="percent"
+              data={[
+                { name: 'Méthode agile Scrum' },
+                { name: 'Diagrammes UML' },
+                { name: 'Merise (MCD)' },
+              ]}
+              />
+            </Box>
+          </Card>
+          </Grid>
         </Box>
-    </Box>
   )
 }
 
@@ -224,29 +217,26 @@ function Formations() {
             direction='row'
             background="#bdc3c7"
             >
-            <Box
-            flex='grow'
-            margin='small'
-            pad='small'
-            >
-              <Text>Ynov Campus</Text>
-              <Text>LP Pro APSIO IUT Blagnac</Text>
-              <Text>BTS SNIR</Text>
-              <Image src='' />
+            <Box height="small" width="medium" overflow="hidden" margin="auto" textAlign="center">
+              <Carousel fill>
+              <Box><Text>Ynov Campus</Text><Image margin="auto" fit="cover" width="200px" src={ynov_campus_logo} /></Box>
+              <Box><Text>LP Pro APSIO IUT Blagnac</Text><Image margin="auto" fit="cover" width="200px" src={iut_blagnac_logo} /></Box>
+              <Box><Text>BTS SNIR</Text><Image margin="auto" fit="cover" width="200px" src={durzy_logo} /></Box>
+              </Carousel>
             </Box>
-
         </Box>
   )
 }
 
 function ContactMe(){
   return(
-    <Nav direction="row" background="#34495e" pad="medium">
-      <Text>Me contacter</Text>
-      <Anchor color="#0072b1" icon={<Linkedin />} hoverIndicator />
-      <Anchor color="#1EAFDA" icon={<Instagram />} hoverIndicator />
-      <Anchor color="#1DA1F2" icon={<Twitter />} hoverIndicator />
-    </Nav>
+    <Box background="#34495e">
+      <Nav direction="row" pad="medium" margin="auto" textAlign="center">
+        <Anchor color="#0072b1" icon={<Linkedin />} hoverIndicator />
+        <Anchor color="#1EAFDA" icon={<Instagram />} hoverIndicator />
+        <Anchor color="#1DA1F2" icon={<Twitter />} hoverIndicator />
+      </Nav>
+    </Box>
   )
 }
 
