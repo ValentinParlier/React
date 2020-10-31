@@ -5,7 +5,7 @@ import './App.css';
 
 import { Grommet, Header, Button, Menu, Footer, Text, Anchor, Main, Heading, Paragraph, Avatar, Box, Grid, Nav, Tab,
    Tabs, Image, Table, TableCell, TableRow, TableHeader, TableBody, Card, CardBody,CardFooter, Carousel,
-   List, ResponsiveContext
+   List, ResponsiveContext, FormField, Form, TextArea
  } from 'grommet';
 import { Home, UserFemale, Instagram, Twitter, Linkedin, Wifi, System, User, Task, Location, ShieldSecurity, Tasks, More, HostMaintenance, Action, Send, Code, Projects } from 'grommet-icons';
 import ynov_campus_logo from "./images/ynov_campus_logo.svg";
@@ -15,7 +15,7 @@ import airbus_logo from "./images/airbus_logo.png";
 
 
 
-const data = [
+const dataProfessionalExp = [
   {
     color: 'blue',
     icon: <Send size="large" />,
@@ -84,12 +84,12 @@ function App() {
       <Box background="#2c3e50" pad="small"><Heading margin="auto">Bienvenue</Heading></Box>
       <Description/>
       <Box  background="#2c3e50" pad="small"><Heading margin="auto">Experiences professionnelles</Heading></Box>
-      <ProExp/>
+      <ProfessionalExp/>
       <Box background="#2c3e50" pad="small"><Heading margin="auto">Compétences</Heading></Box>
       <Skills/>
-
       <Box  background="#2c3e50" pad="small"><Heading margin="auto">Formations</Heading></Box>
       <Formations/>
+      <Box  background="#2c3e50" pad="small"><Heading margin="auto">Me contacter</Heading></Box>
       <ContactMe/>
       <MyFooter/>
     </div>
@@ -100,14 +100,12 @@ function MyHeader() {
   return(
     <Header background="#2c3e50">
       <Box direction="row">
-        <Button  icon={<Avatar  size="5em" src="https://scontent-cdg2-1.cdninstagram.com/v/t51.2885-19/s150x150/69396857_519805882155745_1325905225168453632_n.jpg?_nc_ht=scontent-cdg2-1.cdninstagram.com&_nc_ohc=MuH0ZKhrlkoAX9MAy8p&oh=5d9fb64cd8b3765172e7f5d56538c6f9&oe=5FB1D1DF" />} hoverIndicator />
-        <Heading responsive="false" size="xsmall" textAlign="start" >Valentin Parlier</Heading>
+        <Avatar margin="1em" size="5em" src="https://scontent-cdg2-1.cdninstagram.com/v/t51.2885-19/s150x150/69396857_519805882155745_1325905225168453632_n.jpg?_nc_ht=scontent-cdg2-1.cdninstagram.com&_nc_ohc=MuH0ZKhrlkoAX9MAy8p&oh=5d9fb64cd8b3765172e7f5d56538c6f9&oe=5FB1D1DF" />
+        <Heading margin="1em" responsive="false" size="xsmall" textAlign="start" >Valentin Parlier</Heading>
       </Box>
 
       <Nav direction="row">
-        <Anchor color="#2980b9" size="large" label="Accueil" href="/" />
-        <Anchor color="#2980b9" size="large" label="Mon CV" href="ValentinParlier_CV.pdf" download />
-        <Anchor color="#2980b9" size="large" label="Me contacter" href="#" />
+        <Anchor color="#2980b9" size="large" label="Télécharger mon CV" href="ValentinParlier_CV.pdf" download />
       </Nav>
 
     </Header>
@@ -185,12 +183,12 @@ function Skills() {
   )
 }
 
-export const ProExp = () => (
+export const ProfessionalExp = () => (
   <Grommet theme={theme}>
     <Box pad="large" background="#bdc3c7">
       {/* Responsive Grid */}
       <Grid gap="medium" rows="small" columns={{ count: 'fit', size: 'small' }}>
-        {data.map(value => (
+        {dataProfessionalExp.map(value => (
           <Card background={value.color} key={value.message}>
             <CardBody pad="small">
               <Identifier
@@ -235,11 +233,13 @@ function Formations() {
 function ContactMe(){
   return(
     <Box background="#34495e">
+    <ContactMeForm/>
       <Nav direction="row" pad="medium" margin="auto" textAlign="center">
-        <Anchor color="#0072b1" icon={<Linkedin />} hoverIndicator />
+        <Anchor color="#0072b1" icon={<Linkedin />} hoverIndicator href="https://fr.linkedin.com/in/valentin-parlier-071879188"/>
         <Anchor color="#1EAFDA" icon={<Instagram />} hoverIndicator />
         <Anchor color="#1DA1F2" icon={<Twitter />} hoverIndicator />
       </Nav>
+
     </Box>
   )
 }
@@ -252,6 +252,70 @@ function MyFooter() {
   )
 }
 
+
+
+const ContactMeForm = () => (
+   <Box align="center" pad="large">
+     <Form>
+      <Table margin="auto">
+        <TableHeader>
+          <TableRow>
+            <TableCell scope="col" border="bottom"><FormFieldLabel name="firstName" label="Prénom" required /></TableCell>
+            <TableCell scope="col" border="bottom"><FormFieldLabel name="LastName" label="Nom" required /></TableCell>
+            <TableCell scope="col" border="bottom"><FormFieldLabel name="email" label="Email" required/></TableCell>
+          </TableRow>
+        </TableHeader>
+       </Table>
+
+       <FormFieldComment name="message" label="Message" required/>
+       <Button type="submit" label="Envoyer" primary />
+       <Text margin={{ left: 'small' }} size="small" color="status-critical">
+         * Champs à renseigner
+       </Text>
+     </Form>
+   </Box>
+);
+const FormFieldLabel = props => {
+const { required, label, ...rest } = props;
+ return (
+   <FormField
+     label={
+       required ? (
+         <Box direction="row">
+           <Text>{label}&nbsp;</Text>
+           <Text color="status-critical">*</Text>
+         </Box>
+       ) : (
+         label
+       )
+     }
+     required={required}
+     {...rest}
+   />
+ );
+};
+
+const FormFieldComment = props => {
+const { required, label, ...rest } = props;
+ return (
+   <FormField
+     label={
+       required ? (
+         <Box direction="row">
+           <Text>{label}&nbsp;</Text>
+           <Text color="status-critical">*</Text>
+         </Box>
+       ) : (
+         label
+       )
+     }
+   >
+   <TextArea
+     name="comments" required={required}
+     {...rest}
+   /></FormField>
+ );
+};
 
 
 export default App;
