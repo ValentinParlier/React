@@ -87,7 +87,7 @@ function App() {
       <ProfessionalExp/>
       <Box background="#2c3e50" pad="small"><Heading margin="auto">Compétences</Heading></Box>
       <Skills/>
-      <Box  background="#2c3e50" pad="small"><Heading margin="auto">Formations</Heading></Box>
+      <Box  background="#2c3e50" pad="small"><Heading margin="auto">Formations et diplômes</Heading></Box>
       <Formations/>
       <Box  background="#2c3e50" pad="small"><Heading margin="auto">Me contacter</Heading></Box>
       <ContactMe/>
@@ -221,9 +221,9 @@ function Formations() {
             >
             <Box height="small" width="medium" overflow="hidden" margin="auto" textAlign="center">
               <Carousel fill>
-              <Box><Text>Mastère Dev web</Text><Image margin="auto" fit="cover" width="200px" src={ynov_campus_logo} /><Text>2020 - 2022</Text></Box>
-              <Box><Text>LP Pro APSIO</Text><Image margin="auto" fit="cover" width="200px" src={iut_blagnac_logo} /><Text>2019 - 2020</Text></Box>
-              <Box><Text>BTS SNIR</Text><Image margin="auto" fit="cover" width="200px" src={durzy_logo} /><Text>2017 - 2019</Text></Box>
+              <Box><Text weight="bold">Mastère Dev web</Text><Image margin="auto" fit="cover" width="200px" src={ynov_campus_logo} /><Text>2020 - 2022</Text></Box>
+              <Box><Text weight="bold">LP Pro APSIO</Text><Image margin="auto" fit="cover" width="200px" src={iut_blagnac_logo} /><Text>2019 - 2020</Text></Box>
+              <Box><Text weight="bold">BTS SNIR</Text><Image margin="auto" fit="cover" width="200px" src={durzy_logo} /><Text>2017 - 2019</Text></Box>
               </Carousel>
             </Box>
         </Box>
